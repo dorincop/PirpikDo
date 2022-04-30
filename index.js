@@ -186,7 +186,7 @@ try {
 	hostconfig = require('./config.json'); 
 	_ready = 1; 
 } catch(e) { (async function() {
-	print("병아리 - the seed 모방 엔진에 오신것을 환영합니다.\n");
+	print("포이스크도 - gdl-888님이 개발하신 병아리 the seed 모방 엔진 개조판에 오신것을 환영합니다.\n");
 	
 	hostconfig = {
 		host: input("호스트 주소: "),
@@ -239,7 +239,7 @@ try {
 	
 	fs.writeFileSync('config.json', JSON.stringify(hostconfig), 'utf8');
 	
-	print('\n준비 완료되었습니다. 엔진을 다시 시작하십시오.');
+	print('\n준비 완료되었습니다. 엔진을 다시 시작하세요.');
 	process.exit(0);
 })(); } if(_ready) {
 
@@ -521,16 +521,16 @@ function alertBalloon(content, type = 'danger', dismissible = true, classes = ''
 }
 
 function fetchNamespaces() {
-	return ['문서', '틀', '분류', '파일', '사용자', '특수기능', config.getString('site_name', '더 시드'), '토론', '휴지통', '투표'];
+	return ['문서', '틀', '분류', '파일', '사용자', '특수기능', config.getString('site_name', '포이스크도'), '토론', '휴지통', '투표'];
 }
 
 async function showError(req, code, custom) {
 	return await render(req, "문제가 발생했습니다!", `<h2>${custom ? code : fetchErrorString(code)}</h2>`);
 }
 
-function ip_pas(ip = '', ismember = '', nobold) {
+function ip_pas(ip = '', ismember = '', nobold) { // 이 부분중 탈퇴한 사용자라고 왜 적었나면 최신버전을 모방한거임.
 	if(ismember == 'author') {
-		if(!ip) return `<del style="color: gray;"><i>(삭제된 사용자)</i></del>`;
+		if(!ip) return `<del style="color: gray;"><i>(탈퇴한 사용자)</i></del>`;
 		return `${nobold ? '' : '<strong>'}<a href="/w/사용자:${encodeURIComponent(ip)}">${html.escape(ip)}</a>${nobold ? '' : '</strong>'}`;
 	} else {
 		return `<a href="/contribution/ip/${encodeURIComponent(ip)}/document">${html.escape(ip)}</a>`;
@@ -624,9 +624,9 @@ async function getacl(req, title, namespace, type, getmsg) {
 					} break; case 'suspend_account': {
 						if(!islogin(req)) break;
 						const data = await userblocked(ip_check(req));
-						if(data) {
+						if(data) { // 더시드 엔진 모방
 							ret = 1;
-							msg = '차단된 계정입니다.<br />차단 만료일 : ' + (data.expiration == '0' ? '무기한' : new Date(Number(data.expiration))) + '<br />차단 사유 : ' + data.note;
+							msg = '이 사용자는<br />차단 만료일 : ' + (data.expiration == '0' ? '무기한' : new Date(Number(data.expiration))) + '<br />차단 사유 : ' + data.note;
 						}
 					} break; case 'document_contributor': {
 						var data = await curs.execute("select rev from history where title = ? and namespace = ? and username = ? and ismember = ?", [title, namespace, ip_check(req), islogin(req) ? 'author' : 'ip']);
