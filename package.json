@@ -1,7 +1,7 @@
 {
-  "name": "imitated-seed-v2",
+  "name": "PoiskDo",
   "version": "4.12.0",
-  "description": "더 시드 엔진 4.12.0 모방 엔진",
+  "description": "gdl-888님이 만드신 걸을 개조하여 만든 패키지 (원래 내용 : 더시드 4.12.0 모방 엔진)",
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gdl-888/imitated-seed-v2.git"
+    "url": "git+https://github.com/dorincop/poiskdo.git"
   },
   "keywords": [
     "theseed",
@@ -32,7 +32,7 @@
   "author": "ㅇ",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/gdl-888/imitated-seed-v2/issues"
+    "url": "https://github.com/dorincop/poiskdo/issues"
   },
-  "homepage": "https://github.com/gdl-888/imitated-seed-v2#readme"
+  "homepage": "https://github.com/dorincop/poiskdo#readme"
 }
